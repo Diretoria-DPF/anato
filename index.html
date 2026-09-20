@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0e14" />
+  <meta name="description" content="Plataforma interativa de Anatomia, Fisiologia e Farmacologia 3D com 4 níveis de zoom biológico." />
+
+  <title>LAIFT · Anatomia 3D Interativa</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+
+  <!-- Fonts (Google Fonts - gratuito) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Estilos (ordem importa) -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/sistema-selector.css" />
+  <link rel="stylesheet" href="assets/css/three-viewport.css" />
+  <link rel="stylesheet" href="assets/css/mol-viewport.css" />
+  <link rel="stylesheet" href="assets/css/timeline.css" />
+  <link rel="stylesheet" href="assets/css/quiz.css" />
+  <link rel="stylesheet" href="assets/css/mobile-nav.css" />
+
+  <!-- Three.js via CDN (gratuito, MIT) -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <!-- 3Dmol.js via CDN (gratuito, BSD) -->
+  <script src="https://3Dmol.org/build/3Dmol-min.js" defer></script>
+
+  <!-- Chart.js via CDN (gratuito, MIT) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       SKIP LINK (acessibilidade)
+       ============================================================ -->
+  <a href="#main-viewport" class="skip-link">Ir para o conteúdo principal</a>
+
+  <!-- ============================================================
+       HEADER — Logo + Seletor de Sistemas
+       ============================================================ -->
+  <header class="app-header" role="banner">
+    <div class="header-brand">
+      <div class="brand-logo" aria-hidden="true">🧬</div>
+      <div class="brand-text">
+        <h1>LAIFT</h1>
+        <span>Anatomia 3D Interativa</span>
+      </div>
+    </div>
+
+    <!-- Seletor horizontal de sistemas (populado via JS) -->
+    <nav class="sistema-selector" id="sistemaSelector" role="tablist" aria-label="Seletor de sistemas anatômicos">
+      <!-- Populado por assets/js/ui/sistema-selector.js -->
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="btnSearch" aria-label="Buscar (Ctrl+K)" title="Buscar (Ctrl+K)">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+      </button>
+      <button class="icon-btn" id="btnLevel" aria-label="Alternar nível de zoom" title="Níveis de Zoom">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+        </svg>
+      </button>
+      <button class="icon-btn" id="btnProfile" aria-label="Perfil do usuário" title="Perfil">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 21c0-4 4-7 8-7s8 3 8 7" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       BARRA DE NÍVEIS DE ZOOM (Macro/Meso/Micro/Nano)
+       ============================================================ -->
+  <div class="level-bar" role="tablist" aria-label="Níveis de zoom biológico">
+    <button class="level-btn active" data-level="macro" role="tab" aria-selected="true">
+      <span class="level-num">1</span>
+      <span class="level-name">MACRO</span>
+      <span class="level-desc">Sistemas & Órgãos</span>
+    </button>
+    <button class="level-btn" data-level="meso" role="tab" aria-selected="false">
+      <span class="level-num">2</span>
+      <span class="level-name">MESO</span>
+      <span class="level-desc">Processos Fisiológicos</span>
+    </button>
+    <button class="level-btn" data-level="micro" role="tab" aria-selected="false">
+      <span class="level-num">3</span>
+      <span class="level-name">MICRO</span>
+      <span class="level-desc">Células & Organelos</span>
+    </button>
+    <button class="level-btn" data-level="nano" role="tab" aria-selected="false">
+      <span class="level-num">4</span>
+      <span class="level-name">NANO</span>
+      <span class="level-desc">Enzimas & Fármacos</span>
+    </button>
+  </div>
+
+  <!-- ============================================================
+       LAYOUT PRINCIPAL
+       ============================================================ -->
+  <main class="app-main" id="main-viewport" role="main">
+
+    <!-- -------------------- COLUNA ESQUERDA: VISUALIZADOR -------------------- -->
+    <section class="viewport-column" aria-label="Visualizador 3D">
+
+      <!-- Viewport 3D Anatômico (Three.js) -->
+      <div class="viewport-container" id="threeViewport" data-active="true">
+        <div class="viewport-overlay-top">
+          <span class="viewport-badge" id="viewportSystemBadge">Sistema Completo</span>
+          <button class="viewport-btn" id="btnResetCamera" title="Resetar câmera">⟲</button>
+        </div>
+
+        <div class="three-canvas-wrapper" id="threeCanvasWrapper">
+          <!-- Three.js renderiza aqui -->
+          <div class="loading-indicator" id="threeLoading">
+            <div class="spinner"></div>
+            <p>Carregando corpo humano 3D...</p>
+            <div class="progress-bar"><div class="progress-fill" id="threeProgress"></div></div>
+          </div>
+        </div>
+
+        <div class="viewport-overlay-bottom">
+          <div class="viewport-info" id="threeInfo">
+            <span class="info-label">Clique em uma estrutura para explorar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Viewport Molecular (3Dmol.js) - Inicialmente oculto -->
+      <div class="viewport-container" id="molViewport" data-active="false" aria-hidden="true">
+        <div class="viewport-overlay-top">
+          <span class="viewport-badge" id="molBadge">Visualização Molecular</span>
+          <div class="mol-controls">
+            <button class="viewport-btn" data-style="cartoon" title="Cartoon">Cartoon</button>
+            <button class="viewport-btn" data-style="stick" title="Stick">Stick</button>
+            <button class="viewport-btn" data-style="sphere" title="Sphere">Sphere</button>
+            <button class="viewport-btn" data-style="surface" title="Surface">Surface</button>
+          </div>
+        </div>
+
+        <div class="mol-canvas-wrapper" id="molCanvasWrapper">
+          <!-- 3Dmol.js renderiza aqui -->
+          <div class="loading-indicator" id="molLoading">
+            <div class="spinner"></div>
+            <p>Carregando estrutura molecular...</p>
+          </div>
+        </div>
+
+        <div class="viewport-overlay-bottom">
+          <div class="mol-info" id="molInfo">
+            <span class="info-label" id="molPdbId">—</span>
+            <span class="info-label" id="molName">Nenhuma estrutura carregada</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toggle Viewport (canto inferior direito) -->
+      <button class="viewport-toggle" id="btnToggleViewport" aria-label="Alternar entre 3D anatômico e molecular" title="Alternar 3D ↔ Molécula">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 16H3M7 8H3M21 12H7M21 16l-4-4 4-4" />
+        </svg>
+      </button>
+    </section>
+
+    <!-- -------------------- COLUNA DIREITA: PAINEL DE CONTROLE -------------------- -->
+    <aside class="control-panel" role="complementary" aria-label="Painel de controle">
+
+      <!-- Tabs do painel: Info / Timeline / Agentes / Quiz -->
+      <div class="panel-tabs" role="tablist">
+        <button class="panel-tab active" data-panel="info" role="tab" aria-selected="true">Info</button>
+        <button class="panel-tab" data-panel="timeline" role="tab" aria-selected="false">Processo</button>
+        <button class="panel-tab" data-panel="agents" role="tab" aria-selected="false">Agentes</button>
+        <button class="panel-tab" data-panel="quiz" role="tab" aria-selected="false">Quiz</button>
+      </div>
+
+      <!-- PAINEL: INFO -->
+      <section class="panel-content active" data-panel="info" role="tabpanel">
+        <div class="info-block">
+          <h2 class="info-title" id="infoTitle">Bem-vindo à LAIFT</h2>
+          <p class="info-desc" id="infoDesc">
+            Explore o corpo humano em 4 níveis de zoom biológico. Selecione um sistema
+            na barra superior ou clique em uma estrutura no visualizador 3D.
+          </p>
+        </div>
+
+        <div class="info-stats" id="infoStats" hidden>
+          <div class="stat-row">
+            <span class="stat-key">Sistema:</span>
+            <span class="stat-val" id="statSistema">—</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-key">Órgãos:</span>
+            <span class="stat-val" id="statOrgaos">—</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-key">Função:</span>
+            <span class="stat-val" id="statFuncao">—</span>
+          </div>
+        </div>
+
+        <div class="info-hint">
+          <span class="hint-icon">💡</span>
+          <span>Dica: use <kbd>Ctrl</kbd>+<kbd>K</kbd> para busca rápida.</span>
+        </div>
+      </section>
+
+      <!-- PAINEL: TIMELINE (Processos Fisiológicos) -->
+      <section class="panel-content" data-panel="timeline" role="tabpanel" hidden>
+        <div class="timeline-header">
+          <h3 id="timelineProcessName">Selecione um processo</h3>
+          <span class="timeline-system" id="timelineSystem">—</span>
+        </div>
+
+        <div class="timeline-steps" id="timelineSteps" role="list">
+          <!-- Populado via JS -->
+        </div>
+
+        <div class="timeline-controls">
+          <button class="tl-btn" id="tlPrev" aria-label="Etapa anterior">◀</button>
+          <button class="tl-btn primary" id="tlPlayPause" aria-label="Play/Pause">▶</button>
+          <button class="tl-btn" id="tlNext" aria-label="Próxima etapa">▶</button>
+        </div>
+
+        <div class="timeline-progress">
+          <div class="tl-progress-bar">
+            <div class="tl-progress-fill" id="tlProgressFill"></div>
+          </div>
+          <span class="tl-progress-label" id="tlProgressLabel">0 / 0</span>
+        </div>
+
+        <div class="timeline-desc" id="timelineDesc">
+          Escolha um processo fisiológico para visualizar passo a passo.
+        </div>
+      </section>
+
+      <!-- PAINEL: AGENTES (Enzimas/Moléculas) -->
+      <section class="panel-content" data-panel="agents" role="tabpanel" hidden>
+        <h3>Agentes no Local</h3>
+        <div class="agents-list" id="agentsList" role="list">
+          <!-- Populado via JS -->
+          <p class="empty-state">Nenhum agente carregado. Selecione uma estrutura 3D.</p>
+        </div>
+      </section>
+
+      <!-- PAINEL: QUIZ -->
+      <section class="panel-content" data-panel="quiz" role="tabpanel" hidden>
+        <div class="quiz-header">
+          <h3>Quiz Anatômico</h3>
+          <span class="quiz-progress" id="quizProgress">0/0</span>
+        </div>
+
+        <div class="quiz-question" id="quizQuestion">
+          <p>Carregando questões...</p>
+        </div>
+
+        <div class="quiz-options" id="quizOptions" role="radiogroup">
+          <!-- Populado via JS -->
+        </div>
+
+        <div class="quiz-explanation" id="quizExplanation" hidden>
+          <strong>📚 Explicação:</strong>
+          <p id="quizExplanationText"></p>
+        </div>
+
+        <div class="quiz-nav">
+          <button class="quiz-btn" id="quizPrev">← Anterior</button>
+          <button class="quiz-btn primary" id="quizNext">Próxima →</button>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <!-- ============================================================
+       BARRA DE NAVEGAÇÃO MOBILE (PWA)
+       ============================================================ -->
+  <nav class="mobile-nav" role="navigation" aria-label="Navegação mobile">
+    <button class="mobile-nav-btn active" data-target="viewer" aria-label="Visualizador">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
+      <span>Visualizador</span>
+    </button>
+    <button class="mobile-nav-btn" data-target="processes" aria-label="Processos">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M12 3v18" />
+      </svg>
+      <span>Processos</span>
+    </button>
+    <button class="mobile-nav-btn" data-target="quiz" aria-label="Quiz">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M9 9h.01M15 9h.01M8 14s1.5 2 4 2 4-2 4-2" />
+      </svg>
+      <span>Quiz</span>
+    </button>
+    <button class="mobile-nav-btn" data-target="search" aria-label="Buscar">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.35-4.35" />
+      </svg>
+      <span>Buscar</span>
+    </button>
+  </nav>
+
+  <!-- ============================================================
+       MODAL DE BUSCA (Ctrl+K)
+       ============================================================ -->
+  <div class="modal-overlay" id="searchModal" hidden role="dialog" aria-modal="true" aria-label="Busca">
+    <div class="modal-content">
+      <div class="search-input-wrapper">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+        <input type="text" id="searchInput" placeholder="Buscar sistemas, órgãos, enzimas, fármacos..." autocomplete="off" />
+        <kbd>Esc</kbd>
+      </div>
+      <div class="search-results" id="searchResults">
+        <p class="empty-state">Digite pelo menos 2 caracteres...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TOAST (notificações)
+       ============================================================ -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- ============================================================
+       SCRIPTS — ordem de carregamento importa
+       ============================================================ -->
+  <script type="module" src="assets/js/core/app.js"></script>
+</body>
+</html>
