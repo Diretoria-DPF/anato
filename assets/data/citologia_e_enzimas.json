@@ -1,0 +1,430 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-01-01",
+  "itens": [
+    {
+      "item_id": "amilase_salivar",
+      "tipo": "enzima",
+      "nome": "Amilase Salivar (Ptialina)",
+      "nome_sistematico": "1,4-α-D-glucano glucanohidrolase",
+      "ec_number": "3.2.1.1",
+      "pdb_id": "1SMD",
+      "uniprot_id": "P04745",
+      "localizacao": "Cavidade oral (glândulas salivares parótida e submandibular)",
+      "reacao_catalisada": "Amido → Maltose + Dextrinas",
+      "substrato": "Amido",
+      "produto": "Maltose",
+      "cinetica": {
+        "Km": 1.2,
+        "Vmax": 42,
+        "pH_otimo": 6.9,
+        "temperatura_otima": 37,
+        "cofatores": ["Ca²⁺", "Cl⁻"]
+      },
+      "moduladores": [
+        { "farmaco": "Acarbose", "tipo": "inibidor_competitivo", "chembl_id": "CHEMBL1566" },
+        { "farmaco": "Miglitol", "tipo": "inibidor_competitivo" }
+      ],
+      "contexto_clinico": "Hiperamilasemia na pancreatite aguda; deficiência rara causa intolerância a amido.",
+      "referencia": "Guyton & Hall, Cap. 64"
+    },
+    {
+      "item_id": "pepsina",
+      "tipo": "enzima",
+      "nome": "Pepsina",
+      "ec_number": "3.4.23.1",
+      "pdb_id": "1PSO",
+      "uniprot_id": "P00790",
+      "localizacao": "Estômago (células principais, como pepsinogênio)",
+      "reacao_catalisada": "Proteínas → Peptídeos",
+      "substrato": "Proteínas",
+      "produto": "Peptídeos",
+      "cinetica": {
+        "Km": 0.05,
+        "Vmax": 15,
+        "pH_otimo": 2.0,
+        "cofatores": []
+      },
+      "ativacao": "Pepsinogênio → Pepsina (por HCl gástrico)",
+      "moduladores": [
+        { "farmaco": "Omeprazol", "tipo": "inibidor_indireto_via_pH" },
+        { "farmaco": "Ranitidina", "tipo": "inibidor_indireto_via_pH" }
+      ],
+      "contexto_clinico": "Refluxo causa esofagite péptica; deficiência leva a má digestão proteica.",
+      "referencia": "Guyton & Hall, Cap. 64"
+    },
+    {
+      "item_id": "tripsina",
+      "tipo": "enzima",
+      "nome": "Tripsina",
+      "ec_number": "3.4.21.4",
+      "pdb_id": "1TRN",
+      "uniprot_id": "P07477",
+      "localizacao": "Duodeno (do pâncreas como tripsinogênio)",
+      "reacao_catalisada": "Proteínas → Peptídeos (clivagem em Arg/Lys)",
+      "substrato": "Proteínas",
+      "produto": "Peptídeos",
+      "cinetica": {
+        "Km": 0.02,
+        "Vmax": 25,
+        "pH_otimo": 8.0,
+        "cofatores": ["Ca²⁺"]
+      },
+      "ativacao": "Tripsinogênio → Tripsina (por enteropeptidase)",
+      "moduladores": [
+        { "farmaco": "Aprotinina", "tipo": "inibidor_competitivo" },
+        { "farmaco": "Inibidor de Bowman-Birk", "tipo": "inibidor" }
+      ],
+      "contexto_clinico": "Ativação prematura causa pancreatite aguda (autodigestão).",
+      "referencia": "Guyton & Hall, Cap. 64"
+    },
+    {
+      "item_id": "quimotripsina",
+      "tipo": "enzima",
+      "nome": "Quimotripsina",
+      "ec_number": "3.4.21.1",
+      "pdb_id": "1CHG",
+      "uniprot_id": "P00766",
+      "localizacao": "Duodeno (do pâncreas)",
+      "reacao_catalisada": "Proteínas → Peptídeos (clivagem em aromáticos)",
+      "cinetica": {
+        "Km": 0.5,
+        "pH_otimo": 8.0,
+        "cofatores": []
+      },
+      "moduladores": [
+        { "farmaco": "TPCK", "tipo": "inibidor_irreversivel" }
+      ],
+      "contexto_clinico": "Marcador de pancreatite; ativação prematura leva a autodigestão.",
+      "referencia": "Guyton & Hall, Cap. 64"
+    },
+    {
+      "item_id": "lipase_pancreatica",
+      "tipo": "enzima",
+      "nome": "Lipase Pancreática",
+      "ec_number": "3.1.1.3",
+      "pdb_id": "1LPA",
+      "uniprot_id": "P16233",
+      "localizacao": "Duodeno (do pâncreas)",
+      "reacao_catalisada": "Triglicerídeos → Ácidos graxos + Monoglicerídeos",
+      "cinetica": {
+        "Km": 1.0,
+        "pH_otimo": 8.0,
+        "cofatores": ["colipase", "sais_biliares"]
+      },
+      "moduladores": [
+        { "farmaco": "Orlistate", "tipo": "inibidor_irreversivel", "chembl_id": "CHEMBL1200495" }
+      ],
+      "contexto_clinico": "Orlistate trata obesidade; deficiência causa esteatorréia.",
+      "referencia": "Guyton & Hall, Cap. 65"
+    },
+    {
+      "item_id": "cox_1",
+      "tipo": "enzima",
+      "nome": "Ciclooxigenase-1 (COX-1)",
+      "ec_number": "1.14.99.1",
+      "pdb_id": "1EQG",
+      "uniprot_id": "P23219",
+      "localizacao": "Membrana do retículo endoplasmático (constitutiva)",
+      "reacao_catalisada": "Ácido araquidônico → Prostaglandina H2 (PGH2)",
+      "substrato": "Ácido araquidônico",
+      "produto": "Prostaglandina H2",
+      "cinetica": {
+        "Km": 4.8,
+        "Vmax": 10,
+        "cofatores": ["heme", "peroxidase"]
+      },
+      "moduladores": [
+        { "farmaco": "Aspirina (AAS)", "tipo": "inibidor_irreversivel", "chembl_id": "CHEMBL25" },
+        { "farmaco": "Ibuprofeno", "tipo": "inibidor_competitivo", "chembl_id": "CHEMBL521" }
+      ],
+      "contexto_clinico": "Responsável pela proteção gástrica (muco, bicarbonato, fluxo sanguíneo). Inibição leva a úlceras gástricas.",
+      "referencia": "Guyton & Hall, Cap. 18"
+    },
+    {
+      "item_id": "cox_2",
+      "tipo": "enzima",
+      "nome": "Ciclooxigenase-2 (COX-2)",
+      "ec_number": "1.14.99.1",
+      "pdb_id": "1CX2",
+      "uniprot_id": "P35354",
+      "localizacao": "Membrana (induzível por inflamação)",
+      "reacao_catalisada": "Ácido araquidônico → Prostaglandina H2",
+      "cinetica": {
+        "Km": 5.2,
+        "Vmax": 12.4,
+        "cofatores": ["heme", "peroxidase"]
+      },
+      "moduladores": [
+        { "farmaco": "Celecoxib", "tipo": "inibidor_competitivo", "chembl_id": "CHEMBL118" },
+        { "farmaco": "Rofecoxib", "tipo": "inibidor_competitivo" }
+      ],
+      "contexto_clinico": "Alvo dos AINEs seletivos (coxibes). Uso prolongado aumenta risco cardiovascular.",
+      "referencia": "Guyton & Hall, Cap. 18"
+    },
+    {
+      "item_id": "acetilcolinesterase",
+      "tipo": "enzima",
+      "nome": "Acetilcolinesterase (AChE)",
+      "ec_number": "3.1.1.7",
+      "pdb_id": "1B41",
+      "uniprot_id": "P22303",
+      "localizacao": "Fenda sináptica (junção neuromuscular, SNC)",
+      "reacao_catalisada": "Acetilcolina → Colina + Acetato",
+      "substrato": "Acetilcolina",
+      "produto": "Colina + Acetato",
+      "cinetica": {
+        "Km": 0.1,
+        "Vmax": 25000,
+        "cofatores": []
+      },
+      "moduladores": [
+        { "farmaco": "Donepezila", "tipo": "inibidor_competitivo", "chembl_id": "CHEMBL502" },
+        { "farmaco": "Rivastigmina", "tipo": "inibidor_competitivo" },
+        { "farmaco": "Neostigmina", "tipo": "inibidor_competitivo" },
+        { "farmaco": "Sarin/Gases nervosos", "tipo": "inibidor_irreversivel" }
+      ],
+      "contexto_clinico": "Inibição reversível no Alzheimer (donepezila); inibição irreversível em intoxicação por organofosforados.",
+      "referencia": "Guyton & Hall, Cap. 46"
+    },
+    {
+      "item_id": "bomba_na_k",
+      "tipo": "transportador",
+      "nome": "Na⁺/K⁺-ATPase",
+      "ec_number": "3.6.3.9",
+      "pdb_id": "3B8E",
+      "uniprot_id": "P05024",
+      "localizacao": "Membrana plasmática (basolateral em epitélios)",
+      "reacao_catalisada": "3 Na⁺ (out) + 2 K⁺ (in) + ATP → ADP + Pi",
+      "cinetica": {
+        "Km_Na": 20,
+        "Km_K": 2,
+        "cofatores": ["Mg²⁺"]
+      },
+      "moduladores": [
+        { "farmaco": "Ouabaína", "tipo": "inibidor_especifico", "chembl_id": "CHEMBL222863" },
+        { "farmaco": "Digoxina", "tipo": "inibidor_especifico", "chembl_id": "CHEMBL1751" }
+      ],
+      "contexto_clinico": "Alvo dos glicosídeos cardíacos (digoxina) no tratamento da insuficiência cardíaca.",
+      "referencia": "Guyton & Hall, Cap. 4"
+    },
+    {
+      "item_id": "serca",
+      "tipo": "transportador",
+      "nome": "SERCA (Sarco/Endoplasmic Reticulum Ca²⁺-ATPase)",
+      "ec_number": "7.2.2.10",
+      "pdb_id": "1SU4",
+      "uniprot_id": "P04191",
+      "localizacao": "Membrana do retículo sarcoplasmático",
+      "reacao_catalisada": "2 Ca²⁺ (citosol) + ATP → 2 Ca²⁺ (RS) + ADP",
+      "cinetica": {
+        "Km_Ca": 0.2,
+        "cofatores": ["Mg²⁺"]
+      },
+      "moduladores": [
+        { "farmaco": "Tapsigargina", "tipo": "inibidor_irreversivel" },
+        { "farmaco": "Cicliopiazônico", "tipo": "inibidor_competitivo" }
+      ],
+      "contexto_clinico": "Alvo em pesquisa de fármacos para insuficiência cardíaca.",
+      "referencia": "Guyton & Hall, Cap. 5"
+    },
+    {
+      "item_id": "conversora_angiotensina",
+      "tipo": "enzima",
+      "nome": "Enzima Conversora de Angiotensina (ECA/ACE)",
+      "ec_number": "3.4.15.1",
+      "pdb_id": "1O86",
+      "uniprot_id": "P12821",
+      "localizacao": "Endotélio pulmonar (superfície luminal)",
+      "reacao_catalisada": "Angiotensina I → Angiotensina II; Bradicinina → inativos",
+      "cinetica": {
+        "Km": 15,
+        "cofatores": ["Zn²⁺", "Cl⁻"]
+      },
+      "moduladores": [
+        { "farmaco": "Lisinopril", "tipo": "inibidor_competitivo", "chembl_id": "CHEMBL1237" },
+        { "farmaco": "Enalapril", "tipo": "inibidor_competitivo" },
+        { "farmaco": "Captopril", "tipo": "inibidor_competitivo", "chembl_id": "CHEMBL1161" }
+      ],
+      "contexto_clinico": "Alvo dos IECA no tratamento de hipertensão, IC e nefropatia diabética.",
+      "referencia": "Guyton & Hall, Cap. 19"
+    },
+    {
+      "item_id": "renina",
+      "tipo": "enzima",
+      "nome": "Renina",
+      "ec_number": "3.4.23.15",
+      "pdb_id": "2REN",
+      "uniprot_id": "P00797",
+      "localizacao": "Aparelho justaglomerular renal",
+      "reacao_catalisada": "Angiotensinogênio → Angiotensina I",
+      "moduladores": [
+        { "farmaco": "Alisquireno", "tipo": "inibidor_direto", "chembl_id": "CHEMBL1795107" }
+      ],
+      "contexto_clinico": "Alvo dos inibidores diretos da renina (aliskireno) na hipertensão.",
+      "referencia": "Guyton & Hall, Cap. 19"
+    },
+    {
+      "item_id": "citocromo_p450_3a4",
+      "tipo": "enzima",
+      "nome": "Citocromo P450 3A4 (CYP3A4)",
+      "ec_number": "1.14.14.1",
+      "pdb_id": "1TQN",
+      "uniprot_id": "P08684",
+      "localizacao": "Retículo endoplasmático liso hepático e intestinal",
+      "reacao_catalisada": "Fármacos (oxidados) → metabólitos",
+      "substrato": "~50% dos fármacos comercializados",
+      "cinetica": {
+        "cofatores": ["NADPH", "O₂", "FAD", "FMN"]
+      },
+      "moduladores": [
+        { "farmaco": "Cetoconazol", "tipo": "inibidor_competitivo", "chembl_id": "CHEMBL75" },
+        { "farmaco": "Ritonavir", "tipo": "inibidor" },
+        { "farmaco": "Rifampicina", "tipo": "indutor" },
+        { "farmaco": "Erva-de-são-joão", "tipo": "indutor" }
+      ],
+      "contexto_clinico": "Principal causa de interações medicamentosas clinicamente significativas.",
+      "referencia": "Guyton & Hall, Cap. 30"
+    },
+    {
+      "item_id": "hmg_coa_redutase",
+      "tipo": "enzima",
+      "nome": "HMG-CoA Redutase",
+      "ec_number": "1.1.1.34",
+      "pdb_id": "1HWK",
+      "uniprot_id": "P04035",
+      "localizacao": "Retículo endoplasmático hepático",
+      "reacao_catalisada": "HMG-CoA → Mevalonato",
+      "cinetica": {
+        "cofatores": ["NADPH"]
+      },
+      "moduladores": [
+        { "farmaco": "Sinvastatina", "tipo": "inibidor_competitivo", "chembl_id": "CHEMBL1064" },
+        { "farmaco": "Atorvastatina", "tipo": "inibidor_competitivo", "chembl_id": "CHEMBL1487" },
+        { "farmaco": "Rosuvastatina", "tipo": "inibidor_competitivo" }
+      ],
+      "contexto_clinico": "Etapa limitante da síntese de colesterol. Alvo das estatinas.",
+      "referencia": "Guyton & Hall, Cap. 68"
+    },
+    {
+      "item_id": "atp_sintase",
+      "tipo": "enzima",
+      "nome": "ATP Sintase (Complexo V)",
+      "ec_number": "7.1.2.2",
+      "pdb_id": "1BMF",
+      "uniprot_id": "P00830",
+      "localizacao": "Membrana mitocondrial interna",
+      "reacao_catalisada": "ADP + Pi → ATP",
+      "cinetica": {
+        "cofatores": ["gradiente_de_protons"]
+      },
+      "moduladores": [
+        { "farmaco": "Oligomicina", "tipo": "inibidor" },
+        { "farmaco": "DCCD", "tipo": "inibidor" }
+      ],
+      "contexto_clinico": "Produção de ~90% do ATP celular (fosforilação oxidativa).",
+      "referencia": "Guyton & Hall, Cap. 2"
+    },
+    {
+      "item_id": "superoxido_dismutase",
+      "tipo": "enzima",
+      "nome": "Superóxido Dismutase (SOD)",
+      "ec_number": "1.15.1.1",
+      "pdb_id": "1SOS",
+      "uniprot_id": "P00441",
+      "localizacao": "Citosol (SOD1-Cu/Zn) e mitocôndria (SOD2-Mn)",
+      "reacao_catalisada": "2 O₂•⁻ + 2 H⁺ → H₂O₂ + O₂",
+      "cinetica": {
+        "Km": 0.35,
+        "cofatores": ["Cu", "Zn", "Mn"]
+      },
+      "contexto_clinico": "Mutações em SOD1 estão associadas a ELA (esclerose lateral amiotrófica familiar).",
+      "referencia": "Abbas - Imunologia Celular e Molecular"
+    },
+    {
+      "item_id": "catalase",
+      "tipo": "enzima",
+      "nome": "Catalase",
+      "ec_number": "1.11.1.6",
+      "pdb_id": "1DGB",
+      "uniprot_id": "P00432",
+      "localizacao": "Peroxissomos",
+      "reacao_catalisada": "2 H₂O₂ → 2 H₂O + O₂",
+      "cinetica": {
+        "Km": 25,
+        "cofatores": ["heme"]
+      },
+      "contexto_clinico": "Defesa antioxidante; deficiência causa acatalasemia.",
+      "referencia": "Guyton & Hall, Cap. 2"
+    },
+    {
+      "item_id": "lisozima",
+      "tipo": "enzima",
+      "nome": "Lisozima",
+      "ec_number": "3.2.1.17",
+      "pdb_id": "1LYZ",
+      "uniprot_id": "P00698",
+      "localizacao": "Lágrimas, saliva, muco, leucócitos",
+      "reacao_catalisada": "Peptidoglicano bacteriano → clivagem do β(1→4)",
+      "contexto_clinico": "Defesa imune inata contra bactérias Gram-positivas.",
+      "referencia": "Abbas - Imunologia Celular e Molecular"
+    },
+    {
+      "item_id": "dna_polimerase",
+      "tipo": "enzima",
+      "nome": "DNA Polimerase",
+      "ec_number": "2.7.7.7",
+      "pdb_id": "1TAU",
+      "uniprot_id": "P00582",
+      "localizacao": "Núcleo (replicação), mitocôndria (pol γ)",
+      "reacao_catalisada": "dNTP + DNA_n → DNA_{n+1} + PPi",
+      "cinetica": {
+        "cofatores": ["Mg²⁺"]
+      },
+      "moduladores": [
+        { "farmaco": "Aciclovir", "tipo": "inibidor_competitivo", "chembl_id": "CHEMBL184" },
+        { "farmaco": "Zidovudina", "tipo": "inibidor_competitivo" }
+      ],
+      "contexto_clinico": "Alvo de antivirais (aciclovir, zidovudina) e quimioterápicos.",
+      "referencia": "Abbas - Imunologia Celular e Molecular"
+    },
+    {
+      "item_id": "dihidrofolato_redutase",
+      "tipo": "enzima",
+      "nome": "Di-hidrofolato Redutase (DHFR)",
+      "ec_number": "1.5.1.3",
+      "pdb_id": "1DHF",
+      "uniprot_id": "P00374",
+      "localizacao": "Citosol",
+      "reacao_catalisada": "DHF + NADPH → THF + NADP⁺",
+      "cinetica": {
+        "cofatores": ["NADPH"]
+      },
+      "moduladores": [
+        { "farmaco": "Metotrexato", "tipo": "inibidor_competitivo", "chembl_id": "CHEMBL105" },
+        { "farmaco": "Trimetoprima", "tipo": "inibidor_competitivo" }
+      ],
+      "contexto_clinico": "Alvo do metotrexato (quimioterápico) e trimetoprima (antibiótico).",
+      "referencia": "Abbas - Imunologia Celular e Molecular"
+    },
+    {
+      "item_id": "acetazolamida",
+      "tipo": "enzima",
+      "nome": "Anidrase Carbônica",
+      "ec_number": "4.2.1.1",
+      "pdb_id": "1CA2",
+      "uniprot_id": "P00915",
+      "localizacao": "Citosol (eritrócitos, túbulo renal, olho)",
+      "reacao_catalisada": "CO₂ + H₂O ↔ H₂CO₃ ↔ H⁺ + HCO₃⁻",
+      "cinetica": {
+        "cofatores": ["Zn²⁺"]
+      },
+      "moduladores": [
+        { "farmaco": "Acetazolamida", "tipo": "inibidor_competitivo", "chembl_id": "CHEMBL20" },
+        { "farmaco": "Dorzolamida", "tipo": "inibidor_competitivo" }
+      ],
+      "contexto_clinico": "Usada em glaucoma (reduz produção de humor aquoso) e alcalose metabólica.",
+      "referencia": "Guyton & Hall, Cap. 31"
+    }
+  ]
+}
