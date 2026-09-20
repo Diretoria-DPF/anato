@@ -1,0 +1,354 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-01-01",
+  "processos": [
+    {
+      "processo_id": "degluticao_humana",
+      "nome": "Deglutição Humana",
+      "sistema_relacionado": "digestorio",
+      "duracao_total_ms": 3000,
+      "resumo": "Processo neuromuscular complexo que transfere o bolo alimentar da cavidade oral para o estômago, envolvendo fases voluntárias e involuntárias.",
+      "etapas": [
+        {
+          "ordem": 1,
+          "nome": "Fase Oral (Voluntária)",
+          "duracao_ms": 1000,
+          "descricao": "Mastigação, formação do bolo alimentar e elevação da língua contra o palato duro para propelir o bolo à orofaringe.",
+          "musculos_envolvidos": ["masseter", "temporal", "pterigoideos", "linguais", "milo-hioideo"],
+          "nervos": ["V3 (mastigação)", "XII (hipoglosso)", "VII (facial - orbicular da boca)"],
+          "enzimas_atuantes": ["amilase_salivar", "lipase_lingual"],
+          "acoes_3d": {
+            "mover_malha": "mesh_tongue",
+            "animacao": "elevacao_palato",
+            "camera_preset": "cabeca"
+          },
+          "particulas": {
+            "tipo": "saliva",
+            "waypoints": [
+              { "x": -0.05, "y": 1.68, "z": 0.05 },
+              { "x": 0.0, "y": 1.65, "z": 0.0 },
+              { "x": 0.02, "y": 1.60, "z": -0.03 }
+            ]
+          }
+        },
+        {
+          "ordem": 2,
+          "nome": "Fase Faríngea (Involuntária)",
+          "duracao_ms": 1000,
+          "descricao": "Elevação do palato mole (fechamento da nasofaringe), fechamento da epiglote sobre a laringe e inibição momentânea da respiração (apneia de deglutição).",
+          "musculos_envolvidos": [
+            "constritor_superior_faringe",
+            "constritor_medio_faringe",
+            "palatofaringeo",
+            "estilofaringeo"
+          ],
+          "nervos": ["IX (glossofaríngeo)", "X (vago)"],
+          "acoes_3d": {
+            "mover_malha": "mesh_epiglottis",
+            "animacao": "fechamento_laringe",
+            "camera_preset": "cabeca"
+          },
+          "particulas": {
+            "tipo": "bolus",
+            "waypoints": [
+              { "x": 0.02, "y": 1.60, "z": -0.03 },
+              { "x": 0.02, "y": 1.48, "z": -0.05 },
+              { "x": 0.01, "y": 1.38, "z": -0.04 }
+            ]
+          },
+          "apneia_ms": 600
+        },
+        {
+          "ordem": 3,
+          "nome": "Fase Esofágica",
+          "duracao_ms": 800,
+          "descricao": "Abertura do esfíncter esofágico superior e propagação de ondas peristálticas primárias (iniciadas pela deglutição) e secundárias (por distensão local) controladas pelo plexo mioentérico.",
+          "musculos_envolvidos": ["musculatura_lisa_esofago"],
+          "plexos": ["Auerbach (mioentérico)", "Meissner (submucoso)"],
+          "neurotransmissores": ["acetilcolina", "VIP", "NO"],
+          "acoes_3d": {
+            "animacao": "onda_peristaltica",
+            "camera_preset": "torax"
+          },
+          "particulas": {
+            "tipo": "bolus",
+            "waypoints": [
+              { "x": 0.01, "y": 1.38, "z": -0.04 },
+              { "x": 0.0, "y": 1.20, "z": -0.02 },
+              { "x": -0.05, "y": 1.05, "z": 0.0 }
+            ]
+          }
+        },
+        {
+          "ordem": 4,
+          "nome": "Relaxamento Receptivo Gástrico",
+          "duracao_ms": 200,
+          "descricao": "Abertura do esfíncter esofágico inferior (EEI) mediada por VIP e NO, com relaxamento receptivo do fundo gástrico para acomodar o alimento.",
+          "neurotransmissores": ["VIP", "oxido_nitrico"],
+          "nervos": ["X (vago) - fibras inibitórias"],
+          "acoes_3d": {
+            "animacao": "abertura_EEI",
+            "camera_preset": "estomago"
+          },
+          "particulas": {
+            "tipo": "bolus",
+            "waypoints": [
+              { "x": -0.05, "y": 1.05, "z": 0.0 },
+              { "x": -0.08, "y": 1.02, "z": 0.02 },
+              { "x": -0.10, "y": 0.98, "z": 0.03 }
+            ]
+          }
+        }
+      ],
+      "enzimas_envolvidas": [
+        {
+          "nome": "Amilase salivar (Ptialina)",
+          "pdb_id": "1SMD",
+          "substrato": "Amido",
+          "produto": "Maltose e dextrinas",
+          "pH_otimo": "6.8-7.0",
+          "local_acao": "Cavidade oral"
+        },
+        {
+          "nome": "Lipase lingual",
+          "pdb_id": "1LPA",
+          "substrato": "Triglicerídeos",
+          "produto": "Ácidos graxos e diglicerídeos",
+          "pH_otimo": "4.0-6.0",
+          "local_acao": "Estômago (ativação)"
+        },
+        {
+          "nome": "Mucina",
+          "funcao": "Lubrificação do bolo alimentar",
+          "tipo": "glicoproteina"
+        }
+      ],
+      "patologias_associadas": [
+        { "nome": "Disfagia", "cid": "R13", "descricao": "Dificuldade de deglutição" },
+        { "nome": "Acalásia", "cid": "K22.0", "descricao": "Falha do relaxamento do EEI" },
+        { "nome": "DRGE", "cid": "K21", "descricao": "Refluxo gastroesofágico" },
+        { "nome": "Disfagia orofaríngea neurogênica", "cid": "R13.1", "descricao": "Após AVC" }
+      ]
+    },
+    {
+      "processo_id": "ciclo_cardiaco",
+      "nome": "Ciclo Cardíaco",
+      "sistema_relacionado": "cardiovascular",
+      "duracao_total_ms": 800,
+      "resumo": "Sequência de eventos elétricos e mecânicos que ocorrem em um batimento cardíaco completo, incluindo sístole e diástole atriais e ventriculares.",
+      "etapas": [
+        {
+          "ordem": 1,
+          "nome": "Diástole Ventricular",
+          "duracao_ms": 400,
+          "descricao": "Relaxamento dos ventrículos, abertura das valvas AV (tricúspide e mitral), enchimento passivo (70%) e ativo (30% pela sístole atrial).",
+          "valvulas": { "AV": "abertas", "semilunares": "fechadas" },
+          "pressoes_mmHg": { "atrio": 5, "ventriculo": 5, "aorta": 80 },
+          "acoes_3d": {
+            "animacao": "relaxamento_ventricular",
+            "camera_preset": "coracao"
+          }
+        },
+        {
+          "ordem": 2,
+          "nome": "Sístole Atrial",
+          "duracao_ms": 100,
+          "descricao": "Contração dos átrios completa o enchimento ventricular (30% do volume).",
+          "acoes_3d": { "animacao": "contracao_atrial" }
+        },
+        {
+          "ordem": 3,
+          "nome": "Sístole Ventricular - Fase Isovolumétrica",
+          "duracao_ms": 50,
+          "descricao": "Contração ventricular com todas as valvas fechadas — pressão sobe sem mudança de volume (1ª bulha cardíaca).",
+          "valvulas": { "AV": "fechadas", "semilunares": "fechadas" },
+          "acoes_3d": { "animacao": "contracao_isovolumetrica" }
+        },
+        {
+          "ordem": 4,
+          "nome": "Sístole Ventricular - Ejeção",
+          "duracao_ms": 200,
+          "descricao": "Abertura das valvas semilunares (aórtica e pulmonar), ejeção de ~70 mL para aorta e tronco pulmonar.",
+          "valvulas": { "AV": "fechadas", "semilunares": "abertas" },
+          "pressoes_mmHg": { "ventriculo": 120, "aorta": 120 },
+          "acoes_3d": { "animacao": "ejecao_ventricular" }
+        },
+        {
+          "ordem": 5,
+          "nome": "Relaxamento Isovolumétrico",
+          "duracao_ms": 50,
+          "descricao": "Fechamento das valvas semilunares (2ª bulha cardíaca) e início da diástole.",
+          "valvulas": { "AV": "fechadas", "semilunares": "fechadas" },
+          "acoes_3d": { "animacao": "relaxamento_isovolumetrico" }
+        }
+      ],
+      "bulhas_cardiacas": [
+        { "nome": "B1 (S1)", "origem": "Fechamento das valvas AV", "frequencia": "baixa" },
+        { "nome": "B2 (S2)", "origem": "Fechamento das valvas semilunares", "frequencia": "alta" },
+        { "nome": "B3", "origem": "Enchimento ventricular rápido (patológico em adultos)", "frequencia": "baixa" },
+        { "nome": "B4", "origem": "Sístole atrial forçada (patológico)", "frequencia": "baixa" }
+      ],
+      "parametros_normais": {
+        "duracao_ciclo": "800 ms (75 bpm)",
+        "debito_cardiaco": "5 L/min",
+        "volume_sistolico": "70 mL",
+        "fracao_ejecao": "55-70%"
+      }
+    },
+    {
+      "processo_id": "conducao_impulso_cardiaco",
+      "nome": "Condução do Impulso Cardíaco",
+      "sistema_relacionado": "cardiovascular",
+      "duracao_total_ms": 220,
+      "resumo": "Propagação ordenada do potencial de ação pelo sistema de condução cardíaco, garantindo contração coordenada.",
+      "etapas": [
+        {
+          "ordem": 1,
+          "nome": "Nó Sinoatrial (SA)",
+          "duracao_ms": 0,
+          "descricao": "Marcapasso primário (60-100 bpm). Gera o impulso espontaneamente (automatismo).",
+          "localizacao": "Junção da VCS com átrio direito",
+          "acoes_3d": { "animacao": "geracao_impulso_SA" }
+        },
+        {
+          "ordem": 2,
+          "nome": "Propagação Atrial",
+          "duracao_ms": 50,
+          "descricao": "Impulso se difunde pelos átrios (feixes internodais) causando despolarização atrial.",
+          "acoes_3d": { "animacao": "despolarizacao_atrial" }
+        },
+        {
+          "ordem": 3,
+          "nome": "Nó Atrioventricular (AV)",
+          "duracao_ms": 100,
+          "descricao": "Retardo fisiológico (~100 ms) para permitir enchimento ventricular antes da sístole.",
+          "acoes_3d": { "animacao": "retardo_AV" }
+        },
+        {
+          "ordem": 4,
+          "nome": "Feixe de His e Ramos",
+          "duracao_ms": 30,
+          "descricao": "Condução rápida pelo septo interventricular.",
+          "acoes_3d": { "animacao": "conducao_his" }
+        },
+        {
+          "ordem": 5,
+          "nome": "Fibras de Purkinje",
+          "duracao_ms": 40,
+          "descricao": "Condução para o miocárdio ventricular (despolarização de baixo para cima).",
+          "acoes_3d": { "animacao": "despolarizacao_ventricular" }
+        }
+      ],
+      "velocidades_conducao": {
+        "no_SA": "0.05 m/s",
+        "miocardio_atrial": "0.3 m/s",
+        "no_AV": "0.05 m/s",
+        "feixe_his": "1.0 m/s",
+        "fibras_purkinje": "4.0 m/s"
+      }
+    },
+    {
+      "processo_id": "peristaltismo_intestinal",
+      "nome": "Peristaltismo Intestinal",
+      "sistema_relacionado": "digestorio",
+      "duracao_total_ms": 5000,
+      "resumo": "Movimentos coordenados da musculatura lisa intestinal que propulsionam o quimo/quilo ao longo do TGI.",
+      "etapas": [
+        {
+          "ordem": 1,
+          "nome": "Distensão da Parede",
+          "descricao": "Estimulação mecânica por conteúdo intraluminal ativa mecanorreceptores.",
+          "acoes_3d": { "animacao": "distensao_parede" }
+        },
+        {
+          "ordem": 2,
+          "nome": "Reflexo Mioentérico",
+          "descricao": "Ativação do plexo de Auerbach: contração acima do bolo, relaxamento abaixo.",
+          "neurotransmissores": ["acetilcolina (excitatório)", "VIP e NO (inibitório)"],
+          "acoes_3d": { "animacao": "reflexo_peristaltico" }
+        },
+        {
+          "ordem": 3,
+          "nome": "Propagação da Onda",
+          "descricao": "Onda peristáltica se propaga ~5 cm/s, impulsionando o conteúdo aboralmente.",
+          "acoes_3d": { "animacao": "onda_peristaltica_intestinal" }
+        }
+      ],
+      "segmentos": [
+        { "nome": "Esôfago", "frequencia": "3-5 ondas/min" },
+        { "nome": "Estômago (antral)", "frequencia": "3 ondas/min" },
+        { "nome": "Intestino delgado", "frequencia": "8-12 ondas/min" },
+        { "nome": "Cólon", "frequencia": "1-3 ondas/min" }
+      ]
+    },
+    {
+      "processo_id": "filtracao_glomerular",
+      "nome": "Filtração Glomerular",
+      "sistema_relacionado": "urinario",
+      "duracao_total_ms": 1000,
+      "resumo": "Primeira etapa da formação da urina, ocorrendo no corpúsculo renal (glomérulo + cápsula de Bowman).",
+      "etapas": [
+        {
+          "ordem": 1,
+          "nome": "Ultrafiltração",
+          "descricao": "Pressão hidrostática capilar (~60 mmHg) força plasma através da barreira de filtração (endotélio fenestrado + membrana basal + podócitos).",
+          "acoes_3d": { "animacao": "ultrafiltracao" }
+        },
+        {
+          "ordem": 2,
+          "nome": "Formação do Ultrafiltrado",
+          "descricao": "Filtrado primário contém água, glicose, aminoácidos, sais, ureia — mas NÃO proteínas nem células.",
+          "volume_diario": "180 L/dia",
+          "acoes_3d": { "animacao": "formacao_ultrafiltrado" }
+        },
+        {
+          "ordem": 3,
+          "nome": "Regulação da TFG",
+          "descricao": "Autorregulação (miogênica + tubuloglomerular) e feedback hormonal mantêm TFG estável (125 mL/min).",
+          "fatores": ["autorregulação miogênica", "feedback tubuloglomerular", "sistema renina-angiotensina"],
+          "acoes_3d": { "animacao": "regulacao_TFG" }
+        }
+      ],
+      "parametros": {
+        "TFG_normal": "125 mL/min",
+        "filtrado_diario": "180 L",
+        "urina_final": "1.5 L",
+        "reabsorcao": "99%"
+      }
+    },
+    {
+      "processo_id": "hematose_alveolar",
+      "nome": "Hematose Alveolar",
+      "sistema_relacionado": "respiratorio",
+      "duracao_total_ms": 500,
+      "resumo": "Troca gasosa entre o ar alveolar e o sangue capilar pulmonar através da membrana alvéolo-capilar.",
+      "etapas": [
+        {
+          "ordem": 1,
+          "nome": "Ventilação Alveolar",
+          "descricao": "Renovação do ar alveolar (~350 mL por ciclo) mantendo PO₂ ~104 mmHg e PCO₂ ~40 mmHg.",
+          "acoes_3d": { "animacao": "ventilacao_alveolar" }
+        },
+        {
+          "ordem": 2,
+          "nome": "Difusão de O₂",
+          "descricao": "Gradiente de pressão: alvéolo (104) → sangue venoso (40) → sangue arterial (100 mmHg).",
+          "acoes_3d": { "animacao": "difusao_oxigenio" }
+        },
+        {
+          "ordem": 3,
+          "nome": "Difusão de CO₂",
+          "descricao": "Gradiente: sangue venoso (45) → alvéolo (40). CO₂ difunde 20× mais rápido que O₂.",
+          "acoes_3d": { "animacao": "difusao_dioxido_carbono" }
+        }
+      ],
+      "fatores_que_afetam": [
+        "Espessura da membrana (edema, fibrose)",
+        "Área de superfície (enfisema reduz)",
+        "Gradiente de pressão parcial",
+        "Relação ventilação/perfusão (V/Q)"
+      ],
+      "relacao_VQ_normal": 0.8
+    }
+  ]
+}
