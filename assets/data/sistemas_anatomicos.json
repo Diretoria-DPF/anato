@@ -1,0 +1,380 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-01-01",
+  "sistemas": [
+    {
+      "sistema_id": "digestorio",
+      "nome": "Sistema Digestório",
+      "nome_cientifico": "Systema digestorium",
+      "orgaos": [
+        "boca", "faringe", "esofago", "estomago",
+        "figado", "vesicula_biliar", "pancreas",
+        "intestino_delgado", "duodeno", "jejuno", "ileo",
+        "intestino_grosso", "ceco", "colon", "reto", "anUs"
+      ],
+      "camadas_mesh": [
+        "mesh_oral_cavity", "mesh_tongue", "mesh_teeth",
+        "mesh_pharynx", "mesh_esophagus",
+        "mesh_stomach", "mesh_pylorus",
+        "mesh_liver", "mesh_gallbladder", "mesh_pancreas",
+        "mesh_duodenum", "mesh_jejunum", "mesh_ileum",
+        "mesh_cecum", "mesh_colon_ascending",
+        "mesh_colon_transverse", "mesh_colon_descending",
+        "mesh_rectum"
+      ],
+      "fisiologia_resumo": "Responsável pela ingestão, digestão mecânica e química dos alimentos, absorção de nutrientes e eliminação de resíduos. Composto pelo trato gastrointestinal e glândulas anexas (fígado, pâncreas, vesícula biliar).",
+      "foco_camera": { "x": 0, "y": 0.95, "z": 2.0 },
+      "cor_primaria": "#ff9500",
+      "icone": "digestorio.svg",
+      "subsistemas": [
+        { "id": "tgi_alto", "nome": "TGI Alto", "orgaos": ["boca", "esofago", "estomago", "duodeno"] },
+        { "id": "tgi_baixo", "nome": "TGI Baixo", "orgaos": ["jejuno", "ileo", "colon", "reto"] },
+        { "id": "glandulas_anexas", "nome": "Glândulas Anexas", "orgaos": ["figado", "pancreas", "vesicula_biliar"] }
+      ],
+      "funcoes_principais": [
+        "Digestão mecânica (mastigação, peristaltismo)",
+        "Digestão química (enzimas, ácido clorídrico, bile)",
+        "Absorção de nutrientes (vilosidades intestinais)",
+        "Absorção de água e eletrólitos (cólon)",
+        "Formação e eliminação de fezes"
+      ],
+      "hormonios_envolvidos": ["gastrina", "secretina", "colecistocinina", "grelina", "peptídeo YY"],
+      "processos_relacionados": ["degluticao_humana", "peristaltismo_intestinal", "secrecao_gastrica"]
+    },
+    {
+      "sistema_id": "cardiovascular",
+      "nome": "Sistema Cardiovascular",
+      "nome_cientifico": "Systema cardiovasculare",
+      "orgaos": [
+        "coracao", "pericardio", "aorta", "arteria_pulmonar",
+        "veias_pulmonares", "veia_cava_superior", "veia_cava_inferior",
+        "arterias_coronarias", "veias_coronarias", "capilares"
+      ],
+      "camadas_mesh": [
+        "mesh_heart", "mesh_atrium_left", "mesh_atrium_right",
+        "mesh_ventricle_left", "mesh_ventricle_right",
+        "mesh_mitral_valve", "mesh_tricuspid_valve",
+        "mesh_aortic_valve", "mesh_pulmonary_valve",
+        "mesh_aorta", "mesh_pulmonary_artery",
+        "mesh_vena_cava_superior", "mesh_vena_cava_inferior",
+        "mesh_coronary_arteries"
+      ],
+      "fisiologia_resumo": "Transporte de sangue, oxigênio, nutrientes, hormônios e células imunes. Regulação térmica, equilíbrio ácido-base e distribuição de fluidos corporais.",
+      "foco_camera": { "x": 0, "y": 1.30, "z": 1.8 },
+      "cor_primaria": "#ff4757",
+      "icone": "cardiovascular.svg",
+      "subsistemas": [
+        { "id": "coracao", "nome": "Coração", "orgaos": ["coracao", "valvulas"] },
+        { "id": "circulacao_sistemica", "nome": "Circulação Sistêmica", "orgaos": ["aorta", "arterias", "capilares", "veias"] },
+        { "id": "circulacao_pulmonar", "nome": "Circulação Pulmonar", "orgaos": ["arteria_pulmonar", "veias_pulmonares"] }
+      ],
+      "funcoes_principais": [
+        "Bombeamento de sangue (sístole/diástole)",
+        "Transporte de O₂ e CO₂",
+        "Distribuição de nutrientes e hormônios",
+        "Termorregulação",
+        "Defesa imunológica (leucócitos, anticorpos)"
+      ],
+      "parametros_fisiologicos": {
+        "frequencia_cardiaca_repouso": "60-100 bpm",
+        "debito_cardiaco": "5 L/min",
+        "volume_sistolico": "70 mL",
+        "pressao_arterial_normal": "120/80 mmHg",
+        "fracao_ejecao": "55-70%"
+      },
+      "processos_relacionados": ["ciclo_cardiaco", "conducao_impulso_cardiaco"]
+    },
+    {
+      "sistema_id": "respiratorio",
+      "nome": "Sistema Respiratório",
+      "nome_cientifico": "Systema respiratorium",
+      "orgaos": [
+        "cavidade_nasal", "faringe", "laringe", "traqueia",
+        "bronquios", "bronquiolos", "alveolos",
+        "pulmao_direito", "pulmao_esquerdo", "pleura", "diafragma"
+      ],
+      "camadas_mesh": [
+        "mesh_nasal_cavity", "mesh_pharynx",
+        "mesh_larynx", "mesh_trachea",
+        "mesh_main_bronchi", "mesh_bronchioles",
+        "mesh_lung_right", "mesh_lung_left",
+        "mesh_pleura", "mesh_diaphragm"
+      ],
+      "fisiologia_resumo": "Responsável pelas trocas gasosas (hematose). Realiza ventilação pulmonar, difusão de O₂ e CO₂, transporte de gases e regulação do pH sanguíneo.",
+      "foco_camera": { "x": 0, "y": 1.40, "z": 2.0 },
+      "cor_primaria": "#00b4ff",
+      "icone": "respiratorio.svg",
+      "subsistemas": [
+        { "id": "vias_aereas_superiores", "nome": "Vias Aéreas Superiores", "orgaos": ["cavidade_nasal", "faringe", "laringe"] },
+        { "id": "vias_aereas_inferiores", "nome": "Vias Aéreas Inferiores", "orgaos": ["traqueia", "bronquios", "bronquiolos"] },
+        { "id": "pulmoes", "nome": "Pulmões", "orgaos": ["pulmao_direito", "pulmao_esquerdo", "pleura"] }
+      ],
+      "funcoes_principais": [
+        "Ventilação pulmonar (inspiração/expiração)",
+        "Hematose (troca O₂/CO₂ nos alvéolos)",
+        "Regulação do pH sanguíneo",
+        "Fonação (cordas vocais)",
+        "Defesa (muco, cílios, macrófagos)"
+      ],
+      "volumes_pulmonares": {
+        "volume_corrente": "500 mL",
+        "volume_reserva_inspiratoria": "3000 mL",
+        "volume_reserva_expiratoria": "1100 mL",
+        "volume_residual": "1200 mL",
+        "capacidade_vital": "4600 mL",
+        "capacidade_pulmonar_total": "5800 mL"
+      },
+      "processos_relacionados": ["hematose_alveolar", "ventilacao_pulmonar"]
+    },
+    {
+      "sistema_id": "nervoso",
+      "nome": "Sistema Nervoso",
+      "nome_cientifico": "Systema nervosum",
+      "orgaos": [
+        "encefalo", "cerebro", "cerebelo", "tronco_encefalico",
+        "mesencefalo", "ponte", "bulbo",
+        "medula_espinal", "meninges", "nervos_cranianos",
+        "nervos_espinhais", "plexos_nervosos"
+      ],
+      "camadas_mesh": [
+        "mesh_brain", "mesh_cerebrum", "mesh_cerebellum",
+        "mesh_brainstem", "mesh_midbrain",
+        "mesh_pons", "mesh_medulla_oblongata",
+        "mesh_spinal_cord", "mesh_meninges",
+        "mesh_cranial_nerves", "mesh_spinal_nerves"
+      ],
+      "fisiologia_resumo": "Coordena e integra todas as funções corporais. Divide-se em SNC (encéfalo e medula espinal) e SNP (nervos e gânglios). Controla sensações, movimentos, cognição e funções autonômicas.",
+      "foco_camera": { "x": 0, "y": 1.65, "z": 1.6 },
+      "cor_primaria": "#7c5cff",
+      "icone": "nervoso.svg",
+      "subsistemas": [
+        { "id": "snc", "nome": "Sistema Nervoso Central", "orgaos": ["cerebro", "cerebelo", "tronco_encefalico", "medula_espinal"] },
+        { "id": "snp", "nome": "Sistema Nervoso Periférico", "orgaos": ["nervos_cranianos", "nervos_espinhais"] },
+        { "id": "sna", "nome": "Sistema Nervoso Autônomo", "orgaos": ["simpatico", "parassimpatico", "entérico"] }
+      ],
+      "funcoes_principais": [
+        "Recepção e processamento sensorial",
+        "Controle motor voluntário e involuntário",
+        "Funções cognitivas (memória, linguagem, emoção)",
+        "Regulação autonômica (FC, PA, digestão)",
+        "Homeostase neuroendócrina"
+      ],
+      "nervos_cranianos": [
+        { "id": "I", "nome": "Olfatório", "funcao": "Sensorial (olfato)" },
+        { "id": "II", "nome": "Óptico", "funcao": "Sensorial (visão)" },
+        { "id": "III", "nome": "Oculomotor", "funcao": "Motor (olhos)" },
+        { "id": "IV", "nome": "Troclear", "funcao": "Motor (olhos)" },
+        { "id": "V", "nome": "Trigêmeo", "funcao": "Misto (face)" },
+        { "id": "VI", "nome": "Abducente", "funcao": "Motor (olhos)" },
+        { "id": "VII", "nome": "Facial", "funcao": "Misto (face)" },
+        { "id": "VIII", "nome": "Vestibulococlear", "funcao": "Sensorial (audição/equilíbrio)" },
+        { "id": "IX", "nome": "Glossofaríngeo", "funcao": "Misto (língua/faringe)" },
+        { "id": "X", "nome": "Vago", "funcao": "Misto (visceral)" },
+        { "id": "XI", "nome": "Acessório", "funcao": "Motor (pescoço)" },
+        { "id": "XII", "nome": "Hipoglosso", "funcao": "Motor (língua)" }
+      ],
+      "processos_relacionados": ["potencial_acao", "sinapse_quimica", "reflexo_miotatico"]
+    },
+    {
+      "sistema_id": "muscular",
+      "nome": "Sistema Muscular",
+      "nome_cientifico": "Systema musculare",
+      "orgaos": [
+        "musculos_esqueleticos", "musculos_lisos", "musculo_cardiaco",
+        "tendoes", "fascias", "bursas"
+      ],
+      "camadas_mesh": [
+        "mesh_pectoralis_major", "mesh_deltoid", "mesh_biceps_brachii",
+        "mesh_triceps_brachii", "mesh_rectus_abdominis",
+        "mesh_obliques", "mesh_quadriceps", "mesh_hamstrings",
+        "mesh_gastrocnemius", "mesh_tibialis_anterior",
+        "mesh_trapezius", "mesh_latissimus_dorsi"
+      ],
+      "fisiologia_resumo": "Responsável pela movimentação corporal, manutenção da postura, produção de calor e movimentação de substâncias internas. Dividido em músculo estriado esquelético (voluntário), estriado cardíaco (involuntário) e liso (involuntário).",
+      "foco_camera": { "x": 0, "y": 1.20, "z": 2.6 },
+      "cor_primaria": "#ff6b6b",
+      "icone": "muscular.svg",
+      "subsistemas": [
+        { "id": "membros_superiores", "nome": "Membros Superiores", "orgaos": ["deltoide", "biceps", "triceps", "antebraco"] },
+        { "id": "membros_inferiores", "nome": "Membros Inferiores", "orgaos": ["quadriceps", "isquiotibiais", "gastrocnemio"] },
+        { "id": "tronco", "nome": "Tronco", "orgaos": ["reto_abdominal", "obliquos", "eretores"] }
+      ],
+      "funcoes_principais": [
+        "Movimento voluntário",
+        "Manutenção da postura",
+        "Produção de calor (termogênese)",
+        "Proteção de órgãos internos",
+        "Retorno venoso (bomba muscular)"
+      ],
+      "tipos_fibras": [
+        { "tipo": "I", "nome": "Lentas oxidativas", "caracteristica": "Resistência à fadiga" },
+        { "tipo": "IIa", "nome": "Rápidas oxidativas-glicolíticas", "caracteristica": "Mistas" },
+        { "tipo": "IIb", "nome": "Rápidas glicolíticas", "caracteristica": "Explosivas" }
+      ],
+      "processos_relacionados": ["contracao_muscular", "ciclo_pontes_cruzadas"]
+    },
+    {
+      "sistema_id": "esqueletico",
+      "nome": "Sistema Esquelético",
+      "nome_cientifico": "Systema skeletale",
+      "orgaos": [
+        "cranio", "coluna_vertebral", "caixa_toracica",
+        "cintura_escapular", "membros_superiores",
+        "cintura_pelvica", "membros_inferiores"
+      ],
+      "camadas_mesh": [
+        "mesh_skull", "mesh_mandible", "mesh_vertebrae_cervical",
+        "mesh_vertebrae_thoracic", "mesh_vertebrae_lumbar",
+        "mesh_sternum", "mesh_ribs", "mesh_clavicle",
+        "mesh_scapula", "mesh_humerus", "mesh_radius",
+        "mesh_ulna", "mesh_pelvis", "mesh_femur",
+        "mesh_patella", "mesh_tibia", "mesh_fibula"
+      ],
+      "fisiologia_resumo": "Fornece suporte estrutural, proteção de órgãos vitais, movimento (alavancas), armazenamento de minerais (cálcio, fósforo) e produção de células sanguíneas (medula óssea).",
+      "foco_camera": { "x": 0, "y": 1.20, "z": 4.5 },
+      "cor_primaria": "#b0b8c4",
+      "icone": "esqueletico.svg",
+      "subsistemas": [
+        { "id": "esqueleto_axial", "nome": "Esqueleto Axial", "orgaos": ["cranio", "coluna", "caixa_toracica"] },
+        { "id": "esqueleto_apendicular", "nome": "Esqueleto Apendicular", "orgaos": ["membros_superiores", "membros_inferiores"] }
+      ],
+      "funcoes_principais": [
+        "Suporte e sustentação",
+        "Proteção de órgãos internos",
+        "Alavancas para movimento",
+        "Reserva de cálcio e fósforo",
+        "Hematopoese (medula óssea vermelha)"
+      ],
+      "contagem_ossos_adulto": 206,
+      "tipos_ossos": ["longo", "curto", "plano", "irregular", "sesamoide"],
+      "articulacoes_tipos": ["fibrosa", "cartilaginea", "sinovial"]
+    },
+    {
+      "sistema_id": "urinario",
+      "nome": "Sistema Urinário",
+      "nome_cientifico": "Systema urinarium",
+      "orgaos": [
+        "rim_direito", "rim_esquerdo", "ureter_direito",
+        "ureter_esquerdo", "bexiga", "uretra"
+      ],
+      "camadas_mesh": [
+        "mesh_kidney_right", "mesh_kidney_left",
+        "mesh_ureter_right", "mesh_ureter_left",
+        "mesh_bladder", "mesh_urethra"
+      ],
+      "fisiologia_resumo": "Filtração do sangue, formação da urina, regulação do volume e composição dos fluidos corporais, equilíbrio hidroeletrolítico e ácido-base, e secreção de hormônios (eritropoetina, renina).",
+      "foco_camera": { "x": 0, "y": 0.95, "z": 2.2 },
+      "cor_primaria": "#ffd93d",
+      "icone": "urinario.svg",
+      "subsistemas": [
+        { "id": "rins", "nome": "Rins", "orgaos": ["rim_direito", "rim_esquerdo"] },
+        { "id": "vias_urinarias", "nome": "Vias Urinárias", "orgaos": ["ureter_direito", "ureter_esquerdo", "bexiga", "uretra"] }
+      ],
+      "funcoes_principais": [
+        "Filtração glomerular",
+        "Reabsorção tubular (água, glicose, íons)",
+        "Secreção tubular (H⁺, K⁺, fármacos)",
+        "Regulação da PA (sistema renina-angiotensina)",
+        "Produção de eritropoetina e calcitriol"
+      ],
+      "processos_relacionados": ["filtracao_glomerular", "reabsorcao_tubular"]
+    },
+    {
+      "sistema_id": "endocrino",
+      "nome": "Sistema Endócrino",
+      "nome_cientifico": "Systema endocrinum",
+      "orgaos": [
+        "hipotalamo", "hipofise", "tireoide",
+        "paratireoides", "adrenais", "pancreas_endocrino",
+        "pineal", "timo", "gônadas"
+      ],
+      "camadas_mesh": [
+        "mesh_hypothalamus", "mesh_pituitary",
+        "mesh_thyroid", "mesh_parathyroids",
+        "mesh_adrenal_right", "mesh_adrenal_left",
+        "mesh_pancreatic_islets", "mesh_pineal",
+        "mesh_thymus"
+      ],
+      "fisiologia_resumo": "Secreção de hormônios que regulam metabolismo, crescimento, reprodução, resposta ao estresse e homeostase. Comunicação via corrente sanguínea (ação lenta e duradoura).",
+      "foco_camera": { "x": 0, "y": 1.30, "z": 2.2 },
+      "cor_primaria": "#a55eea",
+      "icone": "endocrino.svg",
+      "subsistemas": [
+        { "id": "eixo_hipotalamo_hipofise", "nome": "Eixo Hipotálamo-Hipófise", "orgaos": ["hipotalamo", "hipofise"] },
+        { "id": "glandulas_perifericas", "nome": "Glândulas Periféricas", "orgaos": ["tireoide", "adrenais", "pancreas_endocrino"] }
+      ],
+      "funcoes_principais": [
+        "Regulação do metabolismo (T3, T4, insulina, glucagon)",
+        "Resposta ao estresse (cortisol, adrenalina)",
+        "Crescimento e desenvolvimento (GH)",
+        "Reprodução (LH, FSH, estrogênio, testosterona)",
+        "Equilíbrio hidroeletrolítico (ADH, aldosterona)"
+      ],
+      "hormonios_principais": ["insulina", "glucagon", "cortisol", "aldosterona", "T3", "T4", "GH", "ADH", "adrenalina", "noradrenalina"]
+    },
+    {
+      "sistema_id": "linfatico",
+      "nome": "Sistema Linfático e Imune",
+      "nome_cientifico": "Systema lymphoideum",
+      "orgaos": [
+        "linfonodos", "vasos_linfaticos", "baco",
+        "timo", "tonsilas", "medula_ossea_vermelha",
+        "linfa"
+      ],
+      "camadas_mesh": [
+        "mesh_lymph_nodes_cervical", "mesh_lymph_nodes_axillary",
+        "mesh_lymph_nodes_inguinal", "mesh_spleen",
+        "mesh_thymus", "mesh_tonsils", "mesh_lymphatic_vessels"
+      ],
+      "fisiologia_resumo": "Drena o excesso de líquido intersticial, transporta lipídios (quilomícrons), e defende o organismo contra patógenos através de resposta imune inata e adaptativa.",
+      "foco_camera": { "x": 0, "y": 1.20, "z": 2.4 },
+      "cor_primaria": "#26de81",
+      "icone": "linfatico.svg",
+      "subsistemas": [
+        { "id": "linfatico", "nome": "Sistema Linfático", "orgaos": ["vasos_linfaticos", "linfonodos", "linfa"] },
+        { "id": "imune", "nome": "Sistema Imune", "orgaos": ["baco", "timo", "tonsilas", "medula_ossea"] }
+      ],
+      "funcoes_principais": [
+        "Drenagem do líquido intersticial",
+        "Absorção de lipídios no intestino",
+        "Defesa contra patógenos",
+        "Produção de células imunes (linfócitos)",
+        "Memória imunológica"
+      ],
+      "celulas_imunes": ["linfocitos_T", "linfocitos_B", "NK", "macrofagos", "dendriticas", "neutrofilos"]
+    },
+    {
+      "sistema_id": "reprodutor",
+      "nome": "Sistema Reprodutor",
+      "nome_cientifico": "Systema genitale",
+      "orgaos": [
+        "ovarios", "tubas_uterinas", "utero", "vagina", "vulva",
+        "testiculos", "epididimo", "vaso_deferente",
+        "prostata", "vesiculas_seminais", "penis"
+      ],
+      "camadas_mesh": [
+        "mesh_ovary_right", "mesh_ovary_left",
+        "mesh_fallopian_tube", "mesh_uterus", "mesh_vagina",
+        "mesh_testis_right", "mesh_testis_left",
+        "mesh_epididymis", "mesh_vas_deferens",
+        "mesh_prostate", "mesh_seminal_vesicles"
+      ],
+      "fisiologia_resumo": "Responsável pela reprodução sexuada. Produz gametas (óvulos e espermatozoides), hormônios sexuais (estrogênio, progesterona, testosterona) e permite a gestação (útero).",
+      "foco_camera": { "x": 0, "y": 0.65, "z": 1.6 },
+      "cor_primaria": "#fd79a8",
+      "icone": "reprodutor.svg",
+      "subsistemas": [
+        { "id": "feminino", "nome": "Sistema Reprodutor Feminino", "orgaos": ["ovarios", "tubas_uterinas", "utero", "vagina"] },
+        { "id": "masculino", "nome": "Sistema Reprodutor Masculino", "orgaos": ["testiculos", "epididimo", "vaso_deferente", "prostata", "penis"] }
+      ],
+      "funcoes_principais": [
+        "Produção de gametas (gametogênese)",
+        "Produção de hormônios sexuais",
+        "Cópula e fertilização",
+        "Gestação e parto",
+        "Amamentação (glândulas mamárias)"
+      ],
+      "hormonios_envolvidos": ["estrogenio", "progesterona", "testosterona", "LH", "FSH", "hCG", "prolactina", "ocitocina"]
+    }
+  ]
+}
