@@ -1,0 +1,60 @@
+{
+  "name": "LAIFT · Anatomia 3D Interativa",
+  "short_name": "LAIFT 3D",
+  "description": "Plataforma interativa de Anatomia, Fisiologia e Farmacologia 3D com 4 níveis de zoom biológico.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b0e14",
+  "theme_color": "#0b0e14",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "categories": ["education", "medical", "science"],
+  "icons": [
+    {
+      "src": "assets/icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Sistema Digestório",
+      "short_name": "Digestório",
+      "url": "./index.html?sistema=digestorio",
+      "description": "Explorar sistema digestório"
+    },
+    {
+      "name": "Simulação de Fármaco",
+      "short_name": "Fármacos",
+      "url": "./index.html?view=drugs",
+      "description": "Simulador farmacológico"
+    }
+  ]
+}
