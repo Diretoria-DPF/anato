@@ -1,0 +1,274 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-01-01",
+  "patogenos": [
+    {
+      "patogeno_id": "sars_cov_2",
+      "nome_cientifico": "SARS-CoV-2",
+      "nome_comum": "COVID-19",
+      "classe": "Virus",
+      "familia": "Coronaviridae",
+      "genoma": "RNA positivo fita simples",
+      "tropismo_tecido": ["epitelio_respiratorio", "pulmao", "intestino", "coracao", "rim"],
+      "mecanismo_invasao": {
+        "receptor_celular": "ACE2 (Enzima Conversora de Angiotensina 2)",
+        "correceptores": ["TMPRSS2", "Furin", "Neuropilina-1"],
+        "proteina_fusao": "Spike (S)",
+        "etapas": [
+          "Ligação da RBD de S ao ACE2",
+          "Clivagem de S por TMPRSS2/Furin",
+          "Fusão de membranas e entrada do RNA",
+          "Tradução de poliproteínas e replicação",
+          "Montagem e liberação por exocitose"
+        ]
+      },
+      "pdb_alvo_terapeutico": {
+        "spike_RBD": "6M0J",
+        "protease_principal_Mpro": "6LU7",
+        "RdRp": "7BV2",
+        "PLpro": "7JIR"
+      },
+      "farmacos_primeira_linha": [
+        { "farmaco": "Paxlovid (Nirmatrelvir+Ritonavir)", "mecanismo": "Inibidor da Mpro", "via": "oral" },
+        { "farmaco": "Remdesivir", "mecanismo": "Inibidor da RdRp", "via": "IV" },
+        { "farmaco": "Molnupiravir", "mecanismo": "Análogo de nucleosídeo", "via": "oral" }
+      ],
+      "vacinas": ["Comirnaty (Pfizer/BioNTech)", "Spikevax (Moderna)", "CoronaVac", "AstraZeneca"],
+      "referencia": "Abbas - Imunologia Celular e Molecular, Cap. 21"
+    },
+    {
+      "patogeno_id": "helicobacter_pylori",
+      "nome_cientifico": "Helicobacter pylori",
+      "classe": "Bacteria",
+      "gram": "Negativo",
+      "morfologia": "Bacilo espiralado com flagelos polares",
+      "tropismo_tecido": ["epitelio_gastrico", "mucosa_antral"],
+      "mecanismo_invasao": {
+        "fatores_virulencia": ["urease", "VacA", "CagA", "adesinas BabA/SabA", "flagelos"],
+        "toxinas": [
+          { "nome": "VacA", "efeito": "Vacuolização celular, apoptose" },
+          { "nome": "CagA", "efeito": "Oncoproteína, inflamação crônica" }
+        ],
+        "sobrevivencia_acida": "Urease hidrolisa ureia em amônia, neutralizando HCl local"
+      },
+      "pdb_alvo_terapeutico": {
+        "urease": "1E9Z",
+        "VacA": "2WQU",
+        "CagA": "4IRI"
+      },
+      "farmacos_primeira_linha": [
+        { "farmaco": "Amoxicilina", "mecanismo": "Inibidor da síntese de parede (β-lactâmico)" },
+        { "farmaco": "Claritromicina", "mecanismo": "Inibidor da síntese proteica (50S)" },
+        { "farmaco": "Omeprazol", "mecanismo": "Inibidor da bomba de prótons" },
+        { "farmaco": "Metronidazol", "mecanismo": "Dano ao DNA em anaeróbios" }
+      ],
+      "patologias_associadas": ["gastrite_cronica", "ulcera_peptica", "adenocarcinoma_gastrico", "linfoma_MALT"],
+      "referencia": "Abbas - Imunologia Celular e Molecular, Cap. 18"
+    },
+    {
+      "patogeno_id": "mycobacterium_tuberculosis",
+      "nome_cientifico": "Mycobacterium tuberculosis",
+      "classe": "Bacteria",
+      "gram": "Álcool-ácido resistente (BAAR)",
+      "morfologia": "Bacilo fino, parede rica em ácidos micólicos",
+      "tropismo_tecido": ["pulmao", "linfonodos", "meninges", "rim", "ossos"],
+      "mecanismo_invasao": {
+        "fatores_virulencia": ["cord_factor", "ESAT-6", "CFP-10", "lipoarabinomanano"],
+        "sobrevivencia": "Impede fusão fagossomo-lisossomo; sobrevive dentro de macrófagos"
+      },
+      "pdb_alvo_terapeutico": {
+        "InhA": "1P44",
+        "RNA_polimerase": "5UHB",
+        "ribossomo_30S": "4V7V"
+      },
+      "farmacos_primeira_linha": [
+        { "farmaco": "Isoniazida", "mecanismo": "Inibe síntese de ácido micólico (InhA)" },
+        { "farmaco": "Rifampicina", "mecanismo": "Inibe RNA polimerase" },
+        { "farmaco": "Pirazinamida", "mecanismo": "Dano à membrana em meio ácido" },
+        { "farmaco": "Etambutol", "mecanismo": "Inibe arabinosil transferase" }
+      ],
+      "patologias_associadas": ["tuberculose_pulmonar", "meningite_tuberculosa", "tuberculose_miliar"],
+      "referencia": "Abbas - Imunologia Celular e Molecular, Cap. 16"
+    },
+    {
+      "patogeno_id": "plasmodium_falciparum",
+      "nome_cientifico": "Plasmodium falciparum",
+      "classe": "Protozoario",
+      "vetor": "Anopheles gambiae",
+      "tropismo_tecido": ["eritrocitos", "figado", "cerebro (malária cerebral)"],
+      "mecanismo_invasao": {
+        "estagios": [
+          "Esporozoíto → hepatócitos (fase hepática)",
+          "Merozoíto → hemácias (fase eritrocítica)",
+          "Gametócitos → mosquito (ciclo sexuado)"
+        ],
+        "fatores_virulencia": ["PfEMP1 (adesão)", "MSP-1", "AMA-1"],
+        "hemoglobina_degradacao": "Digere hemoglobina, libera heme tóxico (pigmento malárico)"
+      },
+      "pdb_alvo_terapeutico": {
+        "DHFR": "1J3K",
+        "PfATP4": "5T1S",
+        "cyt_b": "4U4V"
+      },
+      "farmacos_primeira_linha": [
+        { "farmaco": "Artemisinina", "mecanismo": "Radicais livres em parasita" },
+        { "farmaco": "Cloroquina", "mecanismo": "Inibe desintoxicação do heme (resistência frequente)" },
+        { "farmaco": "Mefloquina", "mecanismo": "Inibe polimerização do heme" },
+        { "farmaco": "Atovaquona", "mecanismo": "Inibe citocromo bc1 mitocondrial" }
+      ],
+      "patologias_associadas": ["malaria", "malaria_cerebral", "anemia_hemolitica"],
+      "referencia": "Abbas - Imunologia Celular e Molecular, Cap. 20"
+    },
+    {
+      "patogeno_id": "escherichia_coli",
+      "nome_cientifico": "Escherichia coli",
+      "classe": "Bacteria",
+      "gram": "Negativo",
+      "tropismo_tecido": ["intestino", "trato_urinario", "sangue"],
+      "mecanismo_invasao": {
+        "fatores_virulencia": ["fimbrias (P, tipo 1)", "toxinas (LT, ST)", "adesinas (intimina)"],
+        "cepas_patogenicas": [
+          { "sigla": "ETEC", "doenca": "Diarreia do viajante" },
+          { "sigla": "EPEC", "doenca": "Diarreia infantil" },
+          { "sigla": "EHEC (O157:H7)", "doenca": "Colite hemorrágica, SHU" },
+          { "sigla": "UPEC", "doenca": "ITU" }
+        ]
+      },
+      "pdb_alvo_terapeutico": {
+        "intimina": "1F02",
+        "shiga_toxin": "1DM0"
+      },
+      "farmacos_primeira_linha": [
+        { "farmaco": "Ciprofloxacino", "mecanismo": "Inibe DNA girase" },
+        { "farmaco": "Nitrofurantoina", "mecanismo": "Dano ao DNA (ITU)" },
+        { "farmaco": "Ceftriaxona", "mecanismo": "β-lactâmico 3ª geração" }
+      ],
+      "referencia": "Abbas - Imunologia Celular e Molecular, Cap. 18"
+    },
+    {
+      "patogeno_id": "staphylococcus_aureus",
+      "nome_cientifico": "Staphylococcus aureus",
+      "classe": "Bacteria",
+      "gram": "Positivo",
+      "morfologia": "Cocos em cachos",
+      "tropismo_tecido": ["pele", "tecido_subcutaneo", "ossos", "sangue", "pulmoes"],
+      "mecanismo_invasao": {
+        "fatores_virulencia": ["coagulase", "proteína_A", "hemolisinas", "leucocidina_PVL"],
+        "toxinas": [
+          { "nome": "TSST-1", "efeito": "Síndrome do choque tóxico" },
+          { "nome": "Enterotoxinas", "efeito": "Intoxicação alimentar" }
+        ],
+        "resistencia": ["MRSA (mecA/PBP2a)", "VRSA (vanA)"]
+      },
+      "pdb_alvo_terapeutico": {
+        "PBP2a": "1VQQ",
+        "coagulase": "1NU3"
+      },
+      "farmacos_primeira_linha": [
+        { "farmaco": "Oxacilina", "mecanismo": "β-lactâmico anti-estafilocócico" },
+        { "farmaco": "Vancomicina", "mecanismo": "Inibe síntese de parede (MRSA)" },
+        { "farmaco": "Linezolida", "mecanismo": "Inibe síntese proteica (50S)" },
+        { "farmaco": "Daptomicina", "mecanismo": "Despolariza membrana" }
+      ],
+      "patologias_associadas": ["piodermites", "pneumonia", "endocardite", "osteomielite", "sepse"],
+      "referencia": "Abbas - Imunologia Celular e Molecular, Cap. 18"
+    },
+    {
+      "patogeno_id": "candida_albicans",
+      "nome_cientifico": "Candida albicans",
+      "classe": "Fungi",
+      "morfologia": "Levedura dimórfica (levedura + hifa)",
+      "tropismo_tecido": ["mucosas", "pele", "sangue (candidemia)"],
+      "mecanismo_invasao": {
+        "fatores_virulencia": ["adesinas (Als)", "proteinases (SAP)", "formação de biofilme", "transição levedura→hifa"]
+      },
+      "pdb_alvo_terapeutico": {
+        "lanosterol_14α_demethylase": "5V5Z"
+      },
+      "farmacos_primeira_linha": [
+        { "farmaco": "Fluconazol", "mecanismo": "Inibe síntese de ergosterol (14α-desmetilase)" },
+        { "farmaco": "Anfotericina B", "mecanismo": "Liga-se ao ergosterol, forma poros" },
+        { "farmaco": "Equinocandinas (Caspofungina)", "mecanismo": "Inibe β-glucana sintase" }
+      ],
+      "patologias_associadas": ["candidíase oral", "candidíase vaginal", "candidemia", "esofagite"],
+      "referencia": "Abbas - Imunologia Celular e Molecular, Cap. 20"
+    },
+    {
+      "patogeno_id": "giardia_lamblia",
+      "nome_cientifico": "Giardia lamblia (Giardia duodenalis)",
+      "classe": "Protozoario",
+      "tropismo_tecido": ["duodeno", "jejuno"],
+      "mecanismo_invasao": {
+        "fatores_virulencia": ["disco adesivo ventral", "proteases (CP)", "variação antigênica (VSP)"],
+        "nao_invasivo": true,
+        "efeito": "Má absorção por dano às microvilosidades"
+      },
+      "pdb_alvo_terapeutico": {
+        "timidilato_sintase": "2B5Q"
+      },
+      "farmacos_primeira_linha": [
+        { "farmaco": "Metronidazol", "mecanismo": "Dano ao DNA em anaeróbios" },
+        { "farmaco": "Tinidazol", "mecanismo": "Similar ao metronidazol" },
+        { "farmaco": "Nitazoxanida", "mecanismo": "Inibe piruvato-ferredoxina oxidorredutase" }
+      ],
+      "patologias_associadas": ["giardíase", "diarreia crônica", "síndrome de má absorção"],
+      "referencia": "Abbas - Imunologia Celular e Molecular, Cap. 20"
+    },
+    {
+      "patogeno_id": "influenza_a",
+      "nome_cientifico": "Influenza A virus",
+      "classe": "Virus",
+      "familia": "Orthomyxoviridae",
+      "genoma": "RNA negativo segmentado",
+      "tropismo_tecido": ["epitelio_respiratorio"],
+      "mecanismo_invasao": {
+        "receptor": "Ácido siálico",
+        "proteina_fusao": "Hemaglutinina (HA)",
+        "neuraminidase_NA": "Libera vírions da célula",
+        "antigenic_drift": "Mutações pontuais em HA/NA",
+        "antigenic_shift": "Recombinação entre cepas (pandemias)"
+      },
+      "pdb_alvo_terapeutico": {
+        "neuraminidase": "1NNC",
+        "hemaglutinina": "1RUZ",
+        "M2_protein": "2KIH"
+      },
+      "farmacos_primeira_linha": [
+        { "farmaco": "Oseltamivir (Tamiflu)", "mecanismo": "Inibe neuraminidase" },
+        { "farmaco": "Zanamivir", "mecanismo": "Inibe neuraminidase" },
+        { "farmaco": "Baloxavir", "mecanismo": "Inibe endonuclease cap-dependente" }
+      ],
+      "vacinas": ["Trivalente", "Quadrivalente"],
+      "referencia": "Abbas - Imunologia Celular e Molecular, Cap. 21"
+    },
+    {
+      "patogeno_id": "hiv",
+      "nome_cientifico": "HIV-1 (Human Immunodeficiency Virus)",
+      "classe": "Virus",
+      "familia": "Retroviridae",
+      "genoma": "RNA positivo (retrovírus)",
+      "tropismo_tecido": ["linfocitos_T_CD4", "macrofagos", "dendriticas"],
+      "mecanismo_invasao": {
+        "receptor": "CD4",
+        "correceptores": ["CCR5", "CXCR4"],
+        "enzimas_virais": ["transcriptase_reversa", "integrase", "protease"],
+        "efeito_imunologico": "Depleção progressiva de linfócitos T CD4+"
+      },
+      "pdb_alvo_terapeutico": {
+        "transcriptase_reversa": "1DLO",
+        "protease": "1HXB",
+        "integrase": "1BL3",
+        "gp120": "2B4C"
+      },
+      "farmacos_primeira_linha": [
+        { "farmaco": "Tenofovir", "mecanismo": "ITRN - Inibidor da transcriptase reversa" },
+        { "farmaco": "Lamivudina (3TC)", "mecanismo": "ITRN" },
+        { "farmaco": "Efavirenz", "mecanismo": "ITRNN" },
+        { "farmaco": "Ritonavir", "mecanismo": "Inibidor da protease" },
+        { "farmaco": "Dolutegravir", "mecanismo": "Inibidor da integrase" }
+      ],
+      "patologias_associadas": ["AIDS", "infecções oportunistas", "sarcoma_de_Kaposi", "linfoma"],
+      "referencia": "Abbas - Imunologia Celular e Molecular, Cap. 22"
+    }
+  ]
+}
